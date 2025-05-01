@@ -227,3 +227,10 @@ chown -R www-data:www-data /var/www/html/
 
 ## 4.Comprobaciones
 
+![Instalación de wordpress](imagenes/1.png)
+
+
+![Certificado](imagenes/certificado.png)
+
+
+![Página ejemplo de wordpress](imagenes/pagina.png)
