@@ -223,6 +223,7 @@ sed -i "/@-/a $SECURITY_KEYS" /var/www/html/wordpress/wp-config.php
 Por ultimo cambiamos el propietario y el grupo al directorio /var/www/html.
 ```bash
 chown -R www-data:www-data /var/www/html/
+```
 
 ## 4.Comprobaciones
 
