@@ -1,5 +1,5 @@
 # practica-1-6
-repositorio de la practica 6
+
 En esta practica vamos a realizar una instalacion de Wordpress en una instancia de amazon.
 Como ya sabemos,estas prácticas son evoluciones de las nteriores,con esto me refiero, a que usaremos el script de la pila lamp,el archivo de variables.
 Aparte,usaremos un .htaccess para configurar los enlaces permanentes de wordpress.
