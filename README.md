@@ -191,6 +191,38 @@ Después de habilitar el módulo reiniciamos el servicio de Apache.
 sudo systemctl restart apache2
 ```
 
+```bash
+sed -i "/AUTH_KEY/d" /var/www/html/wordpress/wp-config.php
+sed -i "/SECURE_AUTH_KEY/d" /var/www/html/wordpress/wp-config.php
+sed -i "/LOGGED_IN_KEY/d" /var/www/html/wordpress/wp-config.php
+sed -i "/NONCE_KEY/d" /var/www/html/wordpress/wp-config.php
+sed -i "/AUTH_SALT/d" /var/www/html/wordpress/wp-config.php
+sed -i "/SECURE_AUTH_SALT/d" /var/www/html/wordpress/wp-config.php
+sed -i "/LOGGED_IN_SALT/d" /var/www/html/wordpress/wp-config.php
+sed -i "/NONCE_SALT/d" /var/www/html/wordpress/wp-config.php
+```
 
+Obtenemos las security keys a traves de una API y las guardamos en una variable.
 
+```bash
+SECURITY_KEYS=$(curl https://api.wordpress.org/secret-key/1.1/salt/)
+```
+
+A veces al darnos una claves seguras podemos tener problemas con el carácter / , para ello vamos a reemplazarlo por el carácter _
+
+```bash
+SECURITY_KEYS=$(echo $SECURITY_KEYS | tr / _)
+```
+
+Añadimos las security keys que hemos obtenido al archivo de configuración.
+
+```bash
+sed -i "/@-/a $SECURITY_KEYS" /var/www/html/wordpress/wp-config.php
+```
+
+Por ultimo cambiamos el propietario y el grupo al directorio /var/www/html.
+```bash
+chown -R www-data:www-data /var/www/html/
+
+## 4.Comprobaciones
 
